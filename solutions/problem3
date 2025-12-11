@@ -1,0 +1,43 @@
+import java.io.*;
+import java.util.*;
+
+public class problem3 {
+
+    private static boolean isPrime(int n) {
+        if (n < 2) return false;
+        if (n % 2 == 0) return (n == 2);
+        int r = (int)Math.sqrt(n);
+        for (int i = 3; i <= r; i += 2) {
+            if (n % i == 0) return false;
+        }
+        return true;
+    }
+
+    public static void main(String[] args) throws Exception {
+        BufferedReader br = new BufferedReader(new FileReader("inputs/states.txt"));
+        String line = br.readLine();
+        br.close();
+
+        String[] parts = line.trim().split("\\s+");
+        int start = 0;
+
+        if (parts[0].equalsIgnoreCase("states")) {
+            start = 1;
+        }
+
+        int done = 0;
+        for (int i = start; i < parts.length; i++) {
+            int x = Integer.parseInt(parts[i]);
+
+            if (isPrime(x)) {
+                done++;
+            } else if (x % 2 == 0) {
+                done++;
+            } else {
+              
+            }
+        }
+
+        System.out.println(done);
+    }
+}
